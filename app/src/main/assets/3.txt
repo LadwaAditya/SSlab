@@ -1,0 +1,36 @@
+program number:2b
+
+
+%{
+int flag=1;
+%}
+
+%%
+[ \t\n]+[aA][nN][dD][ \t\n]+ { flag=0;}
+[ \t\n]+[bB][uU][tT][ \t\n]+ {flag=0;}
+[ \t\n]+[oO][rR][ \t\n]+ {flag=0;}
+
+%%
+main(int argc,char * argv[])
+{
+if(argc==1)
+{
+yyin=stdin;
+printf("\n enter the text:\t\t");
+yylex();
+}
+
+else if(argc==2)
+{
+yyin=fopen(argv[1],"r");
+yylex();
+fclose(yyin);
+}
+
+if(flag==1)
+printf("\n\n\t simple sentence\n\n");
+else 
+printf("\n\n\t compound sentence\n\n");
+}
+end of program:2b
+

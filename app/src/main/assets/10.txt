@@ -1,0 +1,19 @@
+program number:7a
+
+
+if [ $# -eq 0 ]
+then 
+echo -n  " no arguments entered ";
+else 
+a=$* 
+echo -n  " the entered arguments are : "
+echo "$*"
+let x=$#
+echo   " the arguments in reverse order are: "
+while [ $x -ne -1 ]
+do
+echo  "${a[$x]}"
+let x=x-1
+done
+fi
+

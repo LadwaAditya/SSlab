@@ -1,0 +1,39 @@
+program number:1b
+
+
+%{
+int count=0;
+%}
+
+%%
+[/][*][a-zA-Z0-9 \n]+[*][/] {count++;}
+[/][/][a-zA-z0-9 \t]+ {count++;}
+. {   fprintf(yyout,"%s",yytext);  }
+
+%%
+main(int argc,char * argv[])
+{
+yyout=fopen("op.l","w");
+if(argc==1)
+{
+yyin=stdin;
+printf("\n enter  a valid c program ");
+yylex();
+}
+else if(argc==2)
+{
+yyin=fopen(argv[1],"r");
+if(yyin==NULL)
+{
+printf("\n\n file cant be opened ");
+exit (0);
+}
+yylex();
+fclose(yyin);
+
+}
+printf("\n no of comment lines=%d",count);
+}
+end of program:1b
+
+

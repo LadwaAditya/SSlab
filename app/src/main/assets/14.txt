@@ -1,0 +1,23 @@
+program number:9a
+
+#!/bin/sh
+#program to create bundle script
+#1.sh filename.sh input.txt #2.cat input.txt #3.cat create.sh
+#steps f execution
+
+if [ $# -eq 0 ]
+then
+echo "no argument passed"
+exit 1
+fi
+echo " ">create.sh
+for i in $*
+do 
+echo "echo" code recreate the file $i " " >>create.sh
+echo "cat $i <<endf">>create.sh
+cat $i>>create.sh
+echo "echo" create done ' ' >>create.sh
+done
+exit 0
+end of program:9a
+

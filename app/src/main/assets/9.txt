@@ -1,0 +1,40 @@
+//program number:6
+
+%{
+#include<stdio.h>
+//#include<ctype.h>    not necessary
+//#include<string.h>   not necessary
+int n,valid=0;
+%}
+
+%%
+line://|line an 'b' should be in next line
+|line an 'b' '\n' { if(n>10) valid=1;}
+
+an://should be in next line
+|'a' an {n++;}
+;
+
+%%
+main()
+{
+printf("\n enter the string:\t");
+yyparse();
+if(valid)
+printf("\n valid string and number of a's =%d",n);
+else printf("\n invalid and no of a's=%d",n);
+}
+
+
+yyerror()
+{
+printf("\n invalid");
+return 0;
+}
+
+yylex()
+{
+char c=getchar();
+return;
+}
+//end of program:6

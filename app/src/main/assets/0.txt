@@ -1,0 +1,31 @@
+program number:1a
+
+
+%{
+int s=0,l=0,c=0,w=0;
+%}
+
+%%
+[ \t] s++;
+[\n]  l++;
+[^ \t\n]+ { c=c+yyleng; w++; }
+
+%%
+main(int argc,char * argv[])
+{
+if(argc==1)
+{
+yyin=stdin;
+printf("\n enter the string \n");
+yylex();
+}
+else if(argc==2)
+{
+yyin=fopen(argv[1],"r");
+yylex();
+fclose(yyin);
+}
+
+printf("\n\n no of spaces=%d  \n\n no of lines=%d \n\n no of characters=%d \n\n no of words=%d",s,l,c,w);
+}
+end of program:1a

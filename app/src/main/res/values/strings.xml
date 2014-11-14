@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SS  Lab</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+    <string name="theme">#660000</string>
+    <string name="font">Sample Text</string>
+    <string name="setFontSize">Set Font Size</string>
+    <string name="aboutstring">Developer Aditya Ladwa(BIET) \n\n Programes by Akshay Kumar Gowada(BIET)</string>
+    <array name="listLab">
+        <item>1a Count Char,Lines,Spaces</item>
+        <item>1b Count Comment Lines</item>
+        <item>2a Recognise Valid Arithmetic Expression</item>
+        <item>2b Recognise Simple or Compound Statement</item>
+        <item>3 Count no of identifiers</item>
+        <item>4a Recognise Valid Arithmetic Expression(+,-,*,/)</item>
+        <item>4b Recognise Valid Variable</item>
+        <item>5a Evaluate Arithmetic Expression</item>
+        <item>5b Recognise strings aaab,abbb,ab,a</item>
+        <item>6 Recognise Grammar (a^b,n>=10) </item>
+        <item>7a Print Reverse Order</item>
+        <item>7b Create Child process</item>
+        <item>8a Check permission of files</item>
+        <item>8b File Contents demonstration</item>
+        <item>9a Script to recreate Script</item>
+        <item>9b Use fork() to create child</item>
+        <item>10 SRT and Roundrobin</item>
+        <item>11 Fibonacci Series</item>
+        <item>12 Banker\'s Algorithm</item>
+    </array>
+
+
+</resources>

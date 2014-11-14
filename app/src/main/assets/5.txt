@@ -1,0 +1,49 @@
+program number:4a
+
+%{
+#include<stdio.h>
+%}
+
+%token id
+%left '+''-'
+%left '*''/'
+%left '('')'
+%left '['']'
+%left '{''}'
+
+%%
+line: 
+|line exp '\n' { printf("\n valid expression");   return 0;}
+
+exp:id
+|exp'+'exp 
+|exp'-'exp 
+|exp'*'exp 
+|exp'/'exp 
+|'('exp')'
+|'{'exp'}'
+|'['exp']'
+;
+
+
+%%
+main()
+{
+printf("\n enter a expression ");
+yyparse();
+}
+
+yyerror()
+{
+printf("\n invalid expression ");
+}
+
+yylex()
+{
+char c=getchar();
+if(isalnum(c))
+return id;
+return c;
+}
+end of program 4a
+

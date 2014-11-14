@@ -1,0 +1,60 @@
+program 11.c
+
+#include<stdio.h>
+#include<omp.h>
+#include<stdlib.h>
+int MAX;
+int fibonacci(int n)
+{
+int x,y;
+if(n<2)
+return n;
+else
+{
+x=fibonacci(n-2);
+y=fibonacci(n-1);
+return(x+y);
+}
+}
+int random_num()
+{
+int temp,tid;
+temp=rand();
+temp=temp%24;
+tid=omp_get_num_threads();
+printf("Inside the critical section");
+printf("thread id is %d",tid);
+MAX=temp;
+return(MAX);
+}
+int main(int argc,char * argv[])
+{
+int fibnumber[25]={0};
+int n,i,j,threads_tmp,temp,tid,tmp;
+printf("Please enter the number range");
+scanf("%d",&n);
+printf("\n");
+omp_set_num_threads(2);
+#pragma omp parallel
+{
+#pragma omp for private(tid,tmp,fibnumber)
+for(j=1;j<=n;j++)
+{
+tmp=random_num();
+#pragma omp critical
+{
+for(i=1;i<=tmp;i++)
+fibnumber[i]=fibonacci(i);
+printf("\n No of values %d\n",tmp);
+for(i=1;i<=tmp;i++)
+printf("%d\t",fibnumber[i]);
+printf("\n");
+}
+}
+}
+}
+//end of program:11
+
+
+
+

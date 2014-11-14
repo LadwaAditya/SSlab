@@ -1,0 +1,33 @@
+program number:8b
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<unistd.h>
+
+main()
+{
+int i,j;
+char ch;
+FILE * fp;
+fp=fopen("text.txt","w");
+ch='a';
+for(i=0;i<16;i++)
+{
+fwrite(&ch,1,1,fp);
+ch++;
+}
+
+fseek(fp,48,1);
+ch='A';
+for(i=0;i<16;i++)
+{
+fwrite(&ch,1,1,fp);
+ch++;
+}
+fclose(fp);
+fp=fopen("text.txt","r");
+while(fread(&ch,1,1,fp!=0))
+printf("%c",ch);
+fclose(fp);
+}
+end of program:8b

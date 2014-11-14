@@ -1,0 +1,38 @@
+program number:4b
+
+%{
+#include<stdio.h>
+%}
+%token id
+%token al
+
+%%
+line:var '\n' { printf("\n valid string"); return 0; }
+var:al nid
+nid:
+|al nid
+|id nid
+;
+
+%%
+main()
+{
+printf("\n enter the string:\t");
+yyparse();
+}
+
+yyerror()
+{
+printf("\n invalid string");
+}
+
+yylex()
+{
+char c=getchar();
+if(isalpha(c))
+return al;
+if(isdigit(c))
+return id;
+return c;
+}
+end f program:4b

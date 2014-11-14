@@ -1,0 +1,32 @@
+program number:8a
+
+
+clear
+if [ $# -ne 2 ]
+then
+echo -n  "two arguments are nt entered retry "
+else 
+{
+ls -l $1 > file1
+ls -l $2 > file2
+cut -c 1-10 file1 > file3 ##cut certain columns of file1 n paste to file3
+cut -c 1-10  file2 > file4
+cmp file3 file4 > res ##compares file3 file4 content
+if test -s res   
+then 
+echo -n "2 files have diff attributes"
+cat file1
+cat file2
+
+
+else
+{
+echo -n "2 files have same attributes"
+cat file1  ##only one attribute is enough
+##cat file2
+}
+fi
+}
+fi
+
+end of program:8a

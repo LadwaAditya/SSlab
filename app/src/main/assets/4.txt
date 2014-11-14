@@ -1,0 +1,54 @@
+program number:3
+
+
+%{
+#include<stdio.h>
+int id=0,flag=0;
+%}
+
+id [a-zA-Z][a-zA-Z0-9]*
+ws [ \t\n]
+
+%%
+void | 
+"["[0-9]+"]"* |
+int |
+short |
+long |
+double |
+float |
+char { flag=1; }
+
+{id}{ws}*"(" { flag=0; }
+{id}    {if(flag==1)  id++;  fprintf(yyout,"\n\t %s",yytext); }
+
+";" { flag=0; }
+.   { ; }
+
+
+%%
+int  main(int argc,char * argv[])
+{
+if(argc==1)
+{
+yyin=stdin;
+printf("\n enter a valid c program \n");
+yylex();
+}
+else if(argc==2)
+{
+yyin=fopen(argv[1],"r");
+yylex();
+//fclose(yyin);
+}
+
+else if(argc==3)
+{
+yyin=fopen(argv[1],"r");
+yyout=fopen(argv[2],"w");
+yylex();
+}
+printf("\n no of identifiers=%d",id);
+return 0;
+}
+end of program:3a

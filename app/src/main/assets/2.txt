@@ -1,0 +1,44 @@
+program number:2a
+
+
+%{
+int a=0,s=0,m=0,d=0,count=0,id=0,valid=1,brace=0,bracket=0;
+%}
+
+%%
+[+] {a++;count--;}
+[-] {s++;count--;}
+[*] {m++;count--;}
+[/] {d++;count--;}
+[a-zA-Z0-9] { count++;id++; 
+     
+		fprintf(yyout,"\n %s",yytext);  }
+[{] {brace++;}
+[}] {brace--; }
+[(] { bracket++; }
+[)] { bracket--; }
+[\n] { return 0;}
+
+%%
+//int yywrap()
+//{                   //not required
+//return(1);
+//}
+
+
+int main()
+{
+printf("\n\n enter the expression: \n");
+yylex();
+if(valid==0||count!=1||brace!=0||bracket!=0||id==1)
+{
+printf("\n\n  invalid expression ");
+return 0;
+}
+ 
+printf("\n valid expression \n\n");
+printf("\n\n no of identifiers :%d", id);
+printf("\n plus=%d \n\n minus=%d \n\n star=%d\n\n slash=%d",a,s,m,d);
+return 0;
+}
+end of program:2a

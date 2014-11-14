@@ -1,0 +1,35 @@
+//program number 7b
+
+#include<unistd.h>  //to define miselaneous variables in posix based s/m
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+int main()
+{
+int i,n,pid;
+char cmd[30];
+printf("\n enter the number of commands: \t");
+scanf("%d",&n);
+pid=fork();
+system("clear"); //cleras screen in c/c++ on unix based s/m
+
+
+if(pid)
+{
+for(i=1;i<=n;i++)
+{
+printf("\n child process created ");
+printf("\n enter the command %d:\t",i);
+scanf("%s",&cmd);
+system(cmd);
+}
+}
+else
+{
+wait(100);
+system("clear");
+}
+return 0;
+}
+//end of program:7b

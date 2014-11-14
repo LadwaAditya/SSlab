@@ -1,0 +1,33 @@
+//program number:5b no f a's & b's should be same
+
+%{
+#include<stdio.h>
+%}
+
+%%
+line:
+|line exp '\n' {printf("\n valid"); return 0; }
+exp:
+|'a' exp 'b'
+;
+
+%%
+main()
+{
+printf("\n enter the string :\t");
+yyparse();
+}
+
+yyerror()
+{
+printf("\n invalid");
+}
+
+yylex()
+{
+char c=getchar();
+return c;
+}
+//end of program:5b
+
+
