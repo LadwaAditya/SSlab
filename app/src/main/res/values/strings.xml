@@ -11,7 +11,7 @@
     <string name="setFontSize">Set Font Size</string>
     <string name="aboutstring">Developer Aditya Ladwa(BIET) \n\n Programes by Akshay Kumar Gowada(BIET)</string>
     <array name="listLab">
-        <item>1a Count Char,Lines,Spaces</item>
+        <item>1a Count Char,Lines,Space</item>
         <item>1b Count Comment Lines</item>
         <item>2a Recognise Valid Arithmetic Expression</item>
         <item>2b Recognise Simple or Compound Statement</item>
