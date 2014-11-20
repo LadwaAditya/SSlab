@@ -8,6 +8,8 @@
     <string name="drawer_close">Close</string>
     <string name="theme">#660000</string>
     <string name="font">Sample Text</string>
+    <string name="pubId">pub-5118635494203698</string>
+    <string name="adUnitId">ca-app-pub-5118635494203698/5886173598</string>
     <string name="setFontSize">Set Font Size</string>
     <string name="aboutstring">Developer Aditya Ladwa(BIET) \n\n Programes by Akshay Kumar Gowada(BIET)</string>
     <array name="listLab">
@@ -20,7 +22,7 @@
         <item>4b Recognise Valid Variable</item>
         <item>5a Evaluate Arithmetic Expression</item>
         <item>5b Recognise strings aaab,abbb,ab,a</item>
-        <item>6 Recognise Grammar (a^b,n>=10) </item>
+        <item>6 Recognise Grammar (a^b,n>=10)</item>
         <item>7a Print Reverse Order</item>
         <item>7b Create Child process</item>
         <item>8a Check permission of files</item>

@@ -7,6 +7,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
@@ -18,19 +19,21 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 
 
 public class MyActivity extends ActionBarActivity {
 
+    final private static String FRAGMENT = "fragmentID";
+    private static String PREF_POS = "pos";
     private String[] mList;
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private android.support.v7.app.ActionBarDrawerToggle mDrawerToggle;
     private SharedPreferences sp;
     private int pos;
-    private static String PREF_POS = "pos";
-    final private static String FRAGMENT = "fragmentID";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +53,12 @@ public class MyActivity extends ActionBarActivity {
         tintManager.setStatusBarTintEnabled(true);
         tintManager.setStatusBarTintColor(getResources().getColor(R.color.primary));
 
+        AdView adView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+//        AdRequest adRequest = new AdRequest.Builder()
+//                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+//                .build();
+        adView.loadAd(adRequest);
 
         mDrawerList.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mList));
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
@@ -127,18 +136,13 @@ public class MyActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private class DrawerItemClickListener implements android.widget.AdapterView.OnItemClickListener {
-        @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            selectItem(position);
-        }
-
-    }
-
     @Override
     public void onBackPressed() {
+        if (mDrawerLayout.isDrawerOpen(GravityCompat.START))
+            mDrawerLayout.closeDrawers();
+        else
+            super.onBackPressed();
 
-        super.onBackPressed();
 
     }
 
@@ -166,6 +170,14 @@ public class MyActivity extends ActionBarActivity {
 
         ft.commit();
 
+
+    }
+
+    private class DrawerItemClickListener implements android.widget.AdapterView.OnItemClickListener {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            selectItem(position);
+        }
 
     }
 
